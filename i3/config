@@ -37,7 +37,7 @@ exec_always  ~/.config/polybar/launch.sh
 exec_always feh --bg-fill /home/venom/1.jpg
 
 # Provide Gaps to Windows. Increase/Decrease as you like.
-gaps inner 5
+gaps inner 3
 
 #Compositor. This helps in transparency and fading.
 exec_always picom --experimental-backends 
@@ -217,16 +217,6 @@ mode "resize" {
 # 13B] Enter Resize Mode
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available). Commented out due to use of polybar. If you want to
-# use i3 bars (status or blocks) this are some examples on how you can do it.
-# bar {
-        #status_command i3status
-        #tray_output primary
-        #status_command i3status -c ~/.config/i3/i3status.conf
-        #status_command i3blocks -c ~/.config/i3/i3blocks.conf
-#}
-
 
 # Launch a program on a certain workspace, from rofi (which may or may not have a keybinding)
 # for_window [class="nameofapp"] move to workspace $wsno.
@@ -238,7 +228,7 @@ bindsym $mod+r mode "resize"
 # defined keybinding, on a certain workspace, without
 # touching program launcher. Assign Programs to respective
 # workspaces.
-#bindsym $mod+b workspace 5; exec firefox
+bindsym $mod+b exec brave
 
 
 #Multi Monitor (Dual Monitor, extended monitor)
@@ -249,6 +239,8 @@ bindsym $mod+r mode "resize"
 #VGA-X is display used in Desktop connected to monitor with VGA Cable.
 exec --no-startup-id xrandr --output HDMI-2 --right-of HDMI-1 --auto
 
+#Screenshot with PrtSc and Flameshot
+bindsym Print exec flameshot gui
 
 #hide titlebar
 for_window [class="^.*"] border pixel 2
@@ -258,6 +250,14 @@ for_window [class="^.*"] border pixel 0
 
 #exec /home/venom/.conky/conky-startup.sh
 exec flameshot
+exec nm-applet
+exec ferdi
+exec brave
+exec spotify
+for_window [class="Ferdi"] move to workspace $ws1
+for_window [class="Brave"] move to workspace $ws2
+for_window [class="Spotify"] move to workspace $ws10
+
 
 #exec killall dunst && dunst &
 
